@@ -15,14 +15,14 @@ from .serializers import *
 
 
 # class Home(viewsets.ModelViewSet):
-#     queryset = Client.objects.all()
+#     queryset = Client.objects.all()      # Récupère tous les objets Client dans la base de données
 #     serializer_class = ClientSerializer
 #     def list(self, request, *args, **kwargs):
 #         result = Client.objects.all()
 #         print(result)
 #         resulttwo = []
 #         for item in result:
-#             resulttwo.append({
+#             resulttwo.append({      # Ajoute un dictionnaire avec des champs spécifiques à la liste resulttwo
 #                 'id':item.id,
 #                 'name':item.name,
 #                 'total orders':'hello'

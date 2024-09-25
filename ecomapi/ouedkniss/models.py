@@ -24,7 +24,7 @@ class Order (models.Model):
     status=models.CharField(default="in cart",max_length=150)
 
 class Paiement(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_method = models.CharField(default="online", max_length=20)
