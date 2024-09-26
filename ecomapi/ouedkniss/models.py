@@ -25,7 +25,7 @@ class Order (models.Model):
 class Paiement(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    amount = models.IntegerField(max_digits=10, decimal_places=2)
+    amount = models.IntegerField(default=0)
     payment_method = models.CharField(default="online", max_length=20)
     status = models.CharField( default="pending" ,max_length=20,)
     transaction_date = models.DateTimeField(auto_now_add=True)
