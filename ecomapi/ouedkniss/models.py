@@ -11,7 +11,6 @@ class Seller (models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     state=models.CharField(max_length=150)
 
-
 class Product (models.Model):
     title=models.CharField(max_length=200)
     description=models.TextField()

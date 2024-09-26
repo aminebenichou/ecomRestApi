@@ -19,14 +19,15 @@ from django.urls import path, include
 from ouedkniss import views
 from rest_framework import routers
 
-# router = routers.DefaultRouter()
-# router.register('info', views.Home)
+router = routers.DefaultRouter()
+# router.register('clients', views.Home, basename='clients')
+router.register('products', views.ProductView)
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', views.home)
-    # path('clients/', include(router.urls)),
+    path('', include(router.urls)),
 ] 
 

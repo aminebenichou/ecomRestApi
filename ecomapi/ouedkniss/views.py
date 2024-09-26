@@ -9,24 +9,34 @@ from .serializers import *
 # abcdefgh
 # hello
 
-# @api_view(['GET'])
+# @api_view(['POST'])
 # def home(request):
 #     return Response({'msg':'hello'}, status=HTTP_200_OK)
 
 
-# class Home(viewsets.ModelViewSet):
-#     queryset = Client.objects.all()      # Récupère tous les objets Client dans la base de données
-#     serializer_class = ClientSerializer
-#     def list(self, request, *args, **kwargs):
-#         result = Client.objects.all()
-#         print(result)
-#         resulttwo = []
-#         for item in result:
-#             resulttwo.append({      # Ajoute un dictionnaire avec des champs spécifiques à la liste resulttwo
-#                 'id':item.id,
-#                 'name':item.name,
-#                 'total orders':'hello'
-#             })
-#         return Response(resulttwo, status=HTTP_200_OK)
+class ProductView(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def list(self, request, *args, **kwargs):
+        acc_type = request.query_params.get('accounttype')
+        if acc_type == 'client':
+            print('client')
+            result = []
+            for product in self.queryset :
+                result.append(
+                    {
+                        'id': product.id,
+                        'title': product.title,
+                        'desc': product.description,
+                        'price': product.price,
+                    }
+                )
+            return Response(result, status=HTTP_200_OK)
+        if acc_type == 'seller':
+            print('seller')
+            return Response([], status=HTTP_200_OK)
+        return Response([], status=HTTP_200_OK)
         
+
 
