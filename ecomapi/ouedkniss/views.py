@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.status import *
@@ -138,6 +138,8 @@ def assign_to_group(user, role):
 # def logoutView(request):
 #     logout(request)
 #     return
+def choice(request):
+    pass
     
 
 
