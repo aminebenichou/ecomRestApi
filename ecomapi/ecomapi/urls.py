@@ -19,14 +19,22 @@ from django.urls import path, include
 from ouedkniss import views
 from rest_framework import routers
 
-# router = routers.DefaultRouter()
-# router.register('info', views.Home)
 
 
+router = routers.DefaultRouter()
+#router.register('Clientsignup', views.ClientView, basename='client signup'),
+#router.register('Sellersignup',views.SellerView,basename='seller register'),
+#router.register('login',views.loginView,basename="log in "),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.home)
-    # path('clients/', include(router.urls)),
+    path('', include(router.urls)),  
+    path('sellersignup/',include(router.urls)),
+    path('login',include(router.urls)),
+    #path('rest-auth/', include('rest_auth.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('allauth.urls')),
+    #path('rest-auth/', include('rest_auth.urls')),
 ] 
 
